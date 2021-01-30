@@ -1,0 +1,5 @@
+{
+    "PORT":5000,
+    "mongoURI":"mongodb+srv://manit:mn2021@cluster0.c5pkp.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtSecret":"manit-dev-dam"
+}
