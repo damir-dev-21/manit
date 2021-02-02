@@ -9,21 +9,26 @@
     </div>
 </template>
 <script>
-import axios from 'axios';
+import {mapActions} from 'vuex'
 export default {
     data(){
         return{
             name:"",
-            password:""
+            password:"",
+
         }
     },
+    computed:{
+    },
     methods:{
+        ...mapActions(['fetchAuth']),
         async sendData(){
             const newData = {
                 name:this.name,
                 password:this.password
             }
-            await axios.post('http://localhost:5000/admin/',newData)
+            // const data = await axios.post('http://localhost:5000/admin/',newData);
+            this.fetchAuth(newData)
         }
     }
 }

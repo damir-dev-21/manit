@@ -16,7 +16,65 @@ import SMM from '@/pages/Services/SMM';
 
 Vue.use(Router)
 
-const router = new Router({
+const auth = localStorage.getItem('jwt')
+
+let router;
+
+console.log(auth)
+
+if(auth){
+    router = new Router({
+        mode:'history',
+        routes:[
+            {
+                path:'/',
+                component:Home
+            },
+            {
+                path:'/service/sites',
+                component:Sites,
+            },
+            {
+                path:'/service/mobile',
+                component:Mobile,
+            },
+            {
+                path:'/service/design',
+                component:Design,
+            },
+            {
+                path:'/service/video',
+                component:Video,
+            },
+            {
+                path:'/service/3D',
+                component:ThreeD,
+            },
+            {
+                path:'/service/smm',
+                component:SMM,
+            },
+            {
+                path:'/portfolio',
+                component:Works
+            },
+            {
+                path:'/admin',
+                component:Admin
+            },
+            {
+                path:'/admin/reg',
+                component:Create
+            },
+        ],
+        scrollBehavior(){
+            return {x:0,y:0}
+        }
+    })
+    
+}
+
+router = new Router({
     mode:'history',
     routes:[
         {
@@ -55,10 +113,7 @@ const router = new Router({
             path:'/admin',
             component:Admin
         },
-        {
-            path:'/admin/reg',
-            component:Create
-        },
+        
     ],
     scrollBehavior(){
         return {x:0,y:0}

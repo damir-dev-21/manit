@@ -1,19 +1,24 @@
-import {fakeServices} from '../assets/fakeData/index'
-
+import axios from 'axios'
 
 export default {
     state:{
-        data:fakeServices
+        token:null,
     },
     mutations:{
-
+        setToken(state,token){
+            state.token = token;
+        }
     },
     actions:{
-
+       async fetchAuth({commit},newData){
+           const data = await axios.post('http://localhost:5000/admin/',newData);
+            const jwt = localStorage.setItem('jwt',data.data.token)
+           commit('setToken',jwt)
+       }
     },
     getters:{
-        allServices(state){
-            return state.data
+        getToken(state){
+            return state.token
         }
     },
 }
